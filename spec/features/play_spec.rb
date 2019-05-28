@@ -17,4 +17,14 @@ feature 'Play the game' do
     click_button "rock"
     expect(page).to have_content "You chose rock!"
   end
+
+  # As a player
+  # So that I can play the game against an opponent
+  # I want the computer to choose a weapon
+  scenario 'computer chooses a weapon' do
+    allow_any_instance_of(Array).to receive(:sample).and_return(:paper)
+    register_name
+    click_button "rock"
+    expect(page).to have_content "Computer chose paper!"
+  end
 end
