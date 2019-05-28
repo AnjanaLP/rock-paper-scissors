@@ -1,7 +1,13 @@
 <h1>Hello, <%= @player_name %>!</h1>
 
-<form>
-  <input type="submit" value="rock">
-  <input type="submit" value="paper">
-  <input type="submit" value="scissors">
-</form>
+<% unless @player_weapon %>
+  <form action="/play" method="post">
+    <input type="submit" name="player_weapon" value="rock">
+    <input type="submit" name="player_weapon" value="paper">
+    <input type="submit" name="player_weapon" value="scissors">
+  </form>
+<% end %>
+
+<% if @player_weapon %>
+  <h2>You chose <%= @player_weapon %>!</h2>
+<% end %>
