@@ -1,6 +1,6 @@
-<h1>Hello, <%= @game.player_name %>!</h1>
-
 <% unless @game.player_weapon %>
+  <h1>Hello, <%= @game.player_name %>!</h1>
+  <h2>Choose your weapon below:</h2>
   <form action="/play" method="post">
     <input type="submit" name="player_weapon" value="rock">
     <input type="submit" name="player_weapon" value="paper">
@@ -9,6 +9,7 @@
 <% end %>
 
 <% if @game.player_weapon %>
-  <h2>You chose <%= @game.player_weapon %>!</h2>
-  <h2>Computer chose <%= @game.computer_weapon %>!</h2>
+  <h3>You chose <%= @game.player_weapon %>!</h3>
+  <h3>Computer chose <%= @game.computer_weapon %>!</h3>
+  <h2>You <%= @game.result %>!</h2>
 <% end %>

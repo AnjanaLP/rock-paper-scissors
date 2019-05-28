@@ -21,4 +21,32 @@ describe Game do
       expect(game.computer_weapon).to eq :paper
     end
   end
+
+  describe '#result' do
+    context 'when player wins' do
+        subject(:win_game)  { described_class.new(win_args) }
+        let(:win_args)      { { player_name: "Anjana", player_weapon: :paper, computer_weapon: :rock} }
+
+        it 'returns :win' do
+          expect(win_game.result).to eq :win
+      end
+    end
+
+    context 'when player loses' do
+        subject(:lose_game)  { game }
+
+        it 'returns :lose' do
+          expect(lose_game.result).to eq :lose
+      end
+    end
+
+    context 'when player draws' do
+        subject(:draw_game)  { described_class.new(draw_args) }
+        let(:draw_args)      { { player_name: "Anjana", player_weapon: :scissors, computer_weapon: :scissors} }
+
+        it 'returns :draw' do
+          expect(draw_game.result).to eq :draw
+      end
+    end
+  end
 end

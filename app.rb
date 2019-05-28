@@ -20,7 +20,7 @@ class RPS < Sinatra::Base
   end
 
   post '/play' do
-    session[:player_weapon] = params[:player_weapon]
+    session[:player_weapon] = params[:player_weapon].to_sym
     session[:computer_weapon] = Computer.new.weapon
     redirect '/play'
   end

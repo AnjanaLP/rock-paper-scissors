@@ -27,4 +27,28 @@ feature 'Play the game' do
     click_button "rock"
     expect(page).to have_content "Computer chose paper!"
   end
+
+  # As a player
+  # So that I know who is the better player
+  # I want a winner to be declared
+  context 'end game' do
+    before do
+      allow_any_instance_of(Array).to receive(:sample).and_return(:paper)
+    end
+
+    scenario 'computer wins' do
+      click_button "rock"
+      expect(page).to have_content "You lose!"
+    end
+
+    scenario 'player wins' do
+      click_button "scissors"
+      expect(page).to have_content "You win!"
+    end
+
+    scenario 'game is a draw' do
+      click_button "paper"
+      expect(page).to have_content "You draw!"
+    end
+  end
 end
