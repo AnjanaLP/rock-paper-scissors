@@ -3,9 +3,7 @@
 # I want to register my name before playing
 feature 'Register name' do
   scenario 'register name and see it' do
-    visit '/'
-    fill_in "Name", with: "Anjana"
-    click_button "Submit"
+    register_name
     expect(page).to have_content "Hello, Anjana!"
   end
 end
